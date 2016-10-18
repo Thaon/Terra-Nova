@@ -2,27 +2,22 @@
 //
 
 #include "stdafx.h"
-#include <SFML\Graphics.hpp>
+#include "Generator.h"
+#include "Plotter.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	Generator gen = Generator();
+	Plotter plot = Plotter();
 
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
+	plot.LoadTiles();
 
-		window.clear();
-		window.draw(shape);
-		window.display();
-	}
+	int w = 8;
+	int h = 3;
+	std::string file = "test";
+
+	std::string map = gen.GenerateMap(w, h);
+	plot.GenerateImage(w, h, file, map);
 
 	return 0;
 }
