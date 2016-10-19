@@ -28,6 +28,9 @@ void Plotter::LoadTiles()
 {
 	//we load all our images here manually
 	LoadTile("IMG/Grass.png");
+	LoadTile("IMG/Dirt.png");
+	LoadTile("IMG/Cobblestone.png");
+
 }
 
 void Plotter::GenerateImage(int width, int height, std::string filename, std::string map)
@@ -37,16 +40,22 @@ void Plotter::GenerateImage(int width, int height, std::string filename, std::st
 	int realWidth = width * tileSize;
 	int realHeight = height* tileSize;
 
-	image.create(realWidth, realHeight, sf::Color::Black);
+	image.create(realWidth, realHeight, sf::Color::Blue);
 
 	for (int x = 0; x < width; x++)
 	{
 		for (int y = 0; y < height; y++)
 		{
-			switch (map[x])
+			switch (map[y+(height*x)]) //offsetting the y to read the whole map
 			{
-			case '1':
+			case '0':
 				image.copy(m_tiles[0], x*tileSize, y*tileSize);
+				break;
+
+			case '1':
+				image.copy(m_tiles[1], x*tileSize, y*tileSize);
+				break;
+			default:
 				break;
 			}
 		}
@@ -54,5 +63,4 @@ void Plotter::GenerateImage(int width, int height, std::string filename, std::st
 	//now saving the image
 	if (!image.saveToFile(filename + ".png"))
 		std::cout << "could not save image" << std::endl;
-	system("PAUSE");
 }

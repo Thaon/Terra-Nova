@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Common.h"
+#include "Perlin.h"
 
 class Generator
 {

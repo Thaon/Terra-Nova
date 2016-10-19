@@ -157,12 +157,14 @@
   <ItemGroup>
     <ClInclude Include="Common.h" />
     <ClInclude Include="Generator.h" />
+    <ClInclude Include="Perlin.h" />
     <ClInclude Include="Plotter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Generator.cpp" />
+    <ClCompile Include="Perlin.cpp" />
     <ClCompile Include="Plotter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

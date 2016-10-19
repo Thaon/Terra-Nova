@@ -1,5 +1,6 @@
 #pragma once
 
+#include "stdafx.h"
 #include "Common.h"
 
 //from: http://blog.kazade.co.uk/2014/05/a-public-domain-c11-1d2d3d-perlin-noise.html

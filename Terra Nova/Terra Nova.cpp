@@ -12,13 +12,22 @@ int main()
 
 	plot.LoadTiles();
 
-	int w = 8;
-	int h = 3;
+	int w = 300;
+	int h = 100;
 	std::string file = "test";
 
 	std::string map = gen.GenerateMap(w, h);
 	plot.GenerateImage(w, h, file, map);
 
+	
+	//Perlin perlin;
+	//for (double d = 0; d < 10; d += 0.5)
+	//{
+	//	double noise = perlin.noise(d);
+	//	std::cout << noise << std::endl;
+	//}
+	std::cout << "Done!" << std::endl;
+	system("PAUSE");
 	return 0;
 }
 

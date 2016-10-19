@@ -1,5 +1,6 @@
 #pragma once
 
+#include "stdafx.h"
 #include "Perlin.h"
 
 double fade(double t) {
