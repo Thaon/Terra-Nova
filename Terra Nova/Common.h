@@ -21,7 +21,7 @@ Features:
 FIRST PASS
 -----------------------------------------------------------
 # random 1st layer height for dirt with grass on top
-random 2nd layer height for cobblestone
+# random 2nd layer height for cobblestone
 	(it can't go below 5 tiles of distance from the ground)
 
 SECOND PASS

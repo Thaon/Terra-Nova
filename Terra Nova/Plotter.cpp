@@ -55,6 +55,11 @@ void Plotter::GenerateImage(int width, int height, std::string filename, std::st
 			case '1':
 				image.copy(m_tiles[1], x*tileSize, y*tileSize);
 				break;
+			
+			case '2':
+				image.copy(m_tiles[2], x*tileSize, y*tileSize);
+				break;
+
 			default:
 				break;
 			}

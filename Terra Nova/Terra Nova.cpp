@@ -14,6 +14,13 @@ int main()
 
 	int w = 300;
 	int h = 100;
+
+	std::cout << "Enter width in tiles: ";
+	std::cin >> w;
+	std::cout << std::endl << "Enter height in tiles: ";
+	std::cin >> h;
+	std::cout << std::endl;
+
 	std::string file = "test";
 
 	std::string map = gen.GenerateMap(w, h);
