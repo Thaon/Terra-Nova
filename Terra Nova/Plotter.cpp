@@ -109,7 +109,6 @@ void Plotter::GenerateImage(int width, int height, std::string filename, std::st
 				if (x > 2 && x < width*tileSize && randomInt <= treeChance)
 				{
 					image.copy(m_tiles[4], (x - 1)*tileSize, (y - 3)*tileSize, sf::IntRect(0, 0, 24, 24), true);
-					std::cout << randomInt << std::endl;
 				}
 			}
 
@@ -119,7 +118,7 @@ void Plotter::GenerateImage(int width, int height, std::string filename, std::st
 	}
 
 	//darken image
-	int darkGradient = 0;
+	float darkGradient = 0;
 	int threshold = (height * tileSize) / 2;  //we start after the grass line
 
 	for (int x = 0; x < width*tileSize; x++)
@@ -127,9 +126,9 @@ void Plotter::GenerateImage(int width, int height, std::string filename, std::st
 		darkGradient = 0;
 		for (int y = 0; y < height*tileSize; y++)
 		{
-			if (y > threshold && darkGradient < 255)
+			if (y > threshold && darkGradient < 240)
 			{
-				darkGradient++;
+				darkGradient+=.7F;
 			}
 			image.setPixel(x, y, sf::Color(image.getPixel(x,y).r, image.getPixel(x, y).g, image.getPixel(x, y).b, 255) - sf::Color(0, 0, 0, darkGradient));
 		}

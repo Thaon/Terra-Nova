@@ -41,9 +41,9 @@ std::string Generator::GenerateMap(int width, int height)
 	generator.seed(std::random_device{}()); //non deterministic seed
 	float randomFloat = distributionFloat(generator); //keeping it down for the noise generator
 
-	float ironRarity = 7;
-	float goldRarity = 2;
-	float diamondRarity = .5f;
+	float ironRarity = .5f;
+	float goldRarity = .2f;
+	float diamondRarity = .01f;
 
 	std::cout << "Starting terrain generation" << std::endl;
 
