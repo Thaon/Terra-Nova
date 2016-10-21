@@ -72,6 +72,9 @@ std::string Generator::GenerateMap(int width, int height)
 				map += "N"; //null is the sky
 			}
 		}
+
+		//second pass
+
 	}
 	return map;
 }
