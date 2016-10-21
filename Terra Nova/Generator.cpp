@@ -24,12 +24,26 @@ std::string Generator::GenerateMap(int width, int height)
 	generator.seed(std::random_device{}()); //non deterministic seed
 	double randomNumber = distribution(generator); //keeping it down for the noise generator
 
+	//the noise counters will be functionally equivalent to Time in the Perlin noise generator
 	double noiseCounter = randomNumber;
 	double cobbleCounter = randomNumber;
 
-	int terrainOffset = height / 2;
+	//offsetting the terrain so that it doesn't start on top of the screen
+	int terrainOffset;
+	height > 60 ? terrainOffset = height / 3 : terrainOffset = height / 2;
+
+	//offsetting the cobblestone in regard to the terrain
 	int cobbleOffsetMinimum = 5;
 	int cobbleOffset = terrainOffset + cobbleOffsetMinimum + (int)(std::abs(randomNumber)*10); //offsetting the cobblestone down (cobbleOffsetMinimum is the minimum distance)
+
+	//minerals related stuff
+	std::uniform_real_distribution<float> distributionFloat(0, 100);
+	generator.seed(std::random_device{}()); //non deterministic seed
+	float randomFloat = distributionFloat(generator); //keeping it down for the noise generator
+
+	float ironRarity = 7;
+	float goldRarity = 2;
+	float diamondRarity = .5f;
 
 	std::cout << "Starting terrain generation" << std::endl;
 
@@ -51,7 +65,7 @@ std::string Generator::GenerateMap(int width, int height)
 		
 		randomNumber = distribution(generator);
 		cobbleCounter = randomNumber;
-		
+
 		//generating the terrain
 		for (int y = 0; y < height; y++)
 		{
@@ -59,13 +73,28 @@ std::string Generator::GenerateMap(int width, int height)
 			{
 				map += "0"; //grass on top
 			}
-			else if (y > terrainOffset && y <= cobbleOffset)
+			else if (y > terrainOffset && y == cobbleOffset)
+			{
+				map += "3"; //dirt - cobblestone transition
+			}
+			else if (y > terrainOffset && y < cobbleOffset)
 			{
 				map += "1"; //dirt
 			}
 			else if (y > cobbleOffset)
 			{
-				map += "2"; //cobblestone
+				//spawning minerals according to the rarity and the depth
+				if (randomFloat <= diamondRarity)
+					map += "6";
+				else if (randomFloat > diamondRarity && randomFloat <= goldRarity)
+					map += "5";
+				else if (randomFloat > goldRarity && randomFloat <= ironRarity)
+					map += "4";
+				else
+					map += "2"; //cobblestone
+
+				//getting a new float for the next iteration
+				randomFloat = distributionFloat(generator);
 			}
 			else
 			{

@@ -27,11 +27,15 @@ void Plotter::LoadTile(std::string name)
 void Plotter::LoadTiles()
 {
 	//we load all our images here manually
-	LoadTile("IMG/Grass.png");
-	LoadTile("IMG/Dirt.png");
-	LoadTile("IMG/Cobblestone.png");
-	LoadTile("IMG/GrassBlades.png");
-	LoadTile("IMG/Tree.png");
+	LoadTile("IMG/Grass.png");				//0
+	LoadTile("IMG/Dirt.png");				//1
+	LoadTile("IMG/Cobblestone.png");		//2
+	LoadTile("IMG/GrassBlades.png");		//3
+	LoadTile("IMG/Tree.png");				//4
+	LoadTile("IMG/Dirt-Cobblestone.png");	//5
+	LoadTile("IMG/IronOre.png");			//6
+	LoadTile("IMG/GoldOre.png");			//7
+	LoadTile("IMG/DiamondOre.png");			//8
 }
 
 void Plotter::GenerateImage(int width, int height, std::string filename, std::string map)
@@ -41,7 +45,7 @@ void Plotter::GenerateImage(int width, int height, std::string filename, std::st
 	int realWidth = width * tileSize;
 	int realHeight = height* tileSize;
 
-	image.create(realWidth, realHeight, sf::Color::Blue);
+	image.create(realWidth, realHeight, sf::Color(162, 195, 249));
 
 	for (int x = 0; x < width; x++)
 	{
@@ -59,6 +63,22 @@ void Plotter::GenerateImage(int width, int height, std::string filename, std::st
 			
 			case '2':
 				image.copy(m_tiles[2], x*tileSize, y*tileSize); //cobblestone
+				break;
+
+			case '3':
+				image.copy(m_tiles[5], x*tileSize, y*tileSize); //cobblestone
+				break;
+
+			case '4':
+				image.copy(m_tiles[6], x*tileSize, y*tileSize); //iron ore
+				break;
+
+			case '5':
+				image.copy(m_tiles[7], x*tileSize, y*tileSize); //gold ore
+				break;
+
+			case '6':
+				image.copy(m_tiles[8], x*tileSize, y*tileSize); //diamond ore
 				break;
 
 			default:
