@@ -2,10 +2,13 @@
 
 #include "Common.h"
 
+typedef std::vector<sf::Image> ImageVector;
+
+
 class Plotter
 {
 private:
-	std::vector<sf::Image> m_tiles;
+	ImageVector m_tiles;
 
 public:
 	Plotter();

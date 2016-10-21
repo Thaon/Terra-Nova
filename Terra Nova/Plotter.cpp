@@ -1,10 +1,9 @@
 #include "stdafx.h"
 #include "Plotter.h"
 
-
 Plotter::Plotter()
 {
-	m_tiles = std::vector<sf::Image>();
+	m_tiles = ImageVector();
 }
 
 
